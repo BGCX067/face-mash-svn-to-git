@@ -1,0 +1,16 @@
+<include file="Public:header"/>
+
+						<form action="{:U('Index/doLogin')}" method="post">
+						  <table>
+						  <tr><td>学号</td><td><input type="hidden" name='invite_number' value='{$Think.get.invite_number}'><input type="text" name="number" class="inputstyle"/></td></tr>
+						  <tr><td>密码</td><td><input type="password" name="password" class="inputstyle"/></td></tr>
+						   <tr><td></td><td><input type="submit" value="登录"/></td></tr>
+						  </table>
+						</form>
+						<div class="desc">
+						申明：本站登录是通过教务处登录，本站绝对不会保存您的明文密码！若有怀疑，请到教务处修改个临时密码，以后登录必须用首次登录成功的密码登录<br>
+						登录有什么好处？<br>
+						1.登录可以查看自己的各项得分<br>
+
+						</div>
+<include file="Public:footer"/>

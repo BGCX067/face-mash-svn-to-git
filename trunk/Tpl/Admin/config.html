@@ -1,0 +1,21 @@
+<include file="Public:adminHeader"/>
+  <section id="content">
+    <section id="vote_page">
+        <div id="content">
+						<table>
+						<form action="{:U('Config/update')}" method="post">
+						<?php
+						foreach($configs as $f){
+						?>
+						<tr><td><input type="hidden" name="cid[]" value="{$f.cid}" /><input type="hidden" name="name[]" value="{$f.name}" class="inputstyle"/>{$f.desc}</td><td><textarea name="value[]" rows="10" cols="60">{$f.value}</textarea></td></tr>
+						<?php
+						}
+						?>
+						<td><input type="submit" value="修改"/></td><td></td>
+						</form>
+						</table>
+
+        </div>
+     </section>
+  </section>
+<include file="Public:footer"/>

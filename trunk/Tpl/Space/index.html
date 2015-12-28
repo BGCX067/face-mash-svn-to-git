@@ -1,0 +1,15 @@
+<include file="Public:header"/>
+
+<div class="box_sl">
+    
+    {$member.name}|{$member.department}|{$member.class}<br>
+<?php
+ foreach($ranks as $r){
+?>
+[{$r.desc} — 积分：{$r.score}，排名：{$r.rank}]<br>
+<?php
+}
+?>
+</div>
+
+<include file="Public:footer"/>

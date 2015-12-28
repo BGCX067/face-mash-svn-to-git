@@ -1,0 +1,13 @@
+<include file="Public:header"/>
+
+<div style="width:800px;font-size:33px;overflow:hidden;">
+Who is {$Think.get.type}? Click the image to choose.
+</div>
+<?php
+foreach($users as $user){
+?>
+<li><a class="pk" href="{:U('Index/score',array('type'=>'beautiful','number'=>$user['number'],'type'=>$_GET['type']))}"><img  width="140" height="180"  src="{:U('Index/getRankImg',array('number'=>$user['number']))}"/></a><br>{$user.name}|{$user.department}|{$user.class}</li>
+<?php
+}
+?>
+<include file="Public:footer"/>

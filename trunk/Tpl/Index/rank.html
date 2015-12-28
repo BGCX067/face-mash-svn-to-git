@@ -1,0 +1,11 @@
+<include file="Public:rankheader"/>
+<ul>
+    <?php
+foreach($users as $user){
+?>
+<li><img  width="140" height="180" src="{:U('Index/getRankImg',array('number'=>$user['number']))}"/><br>{$user.name}|{$user.department}|{$user.class}<br>该排行榜积分{$user.score}</li>
+<?php
+}
+    ?>
+    </ul>
+<include file="Public:footer"/>

@@ -1,0 +1,16 @@
+<include file="Public:header"/>
+
+<li><img width="140" height="180" src="{:U('Index/getRankImg',array('number'=>$user['number']))}"/><br>{$user.name}|{$user.department}|{$user.class}<br>
+<?php
+ foreach($user['score'] as $s){
+?>
+[<a class="pk" href="{:U('Index/score',array('type'=>$s['name'],'number'=>$user['number']))}">{$s.desc}({$s.score})</a>]&nbsp;&nbsp;
+<?php
+}
+?>
+</li>
+<br>
+<div style="width:800px;overflow:hidden;">
+<a href="{:U('Index/single')}">跳过</a>
+</div>
+<include file="Public:footer"/>

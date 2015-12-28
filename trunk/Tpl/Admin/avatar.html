@@ -1,0 +1,12 @@
+<include file="Public:adminHeader"/>
+ <table>
+ <?php
+ foreach($as as $a){
+ ?>
+<tr><td><img  width="140" height="180"  src='{$a.path}'/></td><td><img  width="140" height="180"  src='{$a.avatar}'/></td><td>[<a href="{:U('Avatar/del',array('aid'=>$a['aid']))}">删除</a>]&nbsp;&nbsp;[<a href="{:U('Avatar/yes',array('aid'=>$a['aid']))}">通过</a>]</td></tr>
+ <?php
+}
+ ?>
+  </form>
+ </table>
+<include file="Public:footer"/>

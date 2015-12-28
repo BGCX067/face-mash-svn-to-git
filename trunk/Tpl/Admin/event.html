@@ -1,0 +1,19 @@
+<include file="Public:adminHeader"/>
+ <table>
+
+ <tr><td>经验值描述</td><td>动作</td><td>获得经验值</td></tr>
+<form action='{:U('Event/add')}' method='post'>
+ <tr><td><input type='text' name='desc' /></td><td><input type='text' name='ac' /></td><td><input type='text' name='score' /><input type='submit' value='添加' /></td></tr>
+ </form>
+<form action='{:U('Event/update')}' method='post'>
+ <?php
+ foreach($events as $re){
+ ?>
+<tr><td><input type='hidden' name='eid[]' value='{$re.eid}' />{$re.desc}</td><td><input type='text' name='ac[]'  value='{$re.ac}'  /></td><td><input type='text' name='score[]'  value='{$re.score}'  /><a href="{:U('Event/del',array('eid'=>$re['eid']))}">删除</a></td></tr>
+ <?php
+}
+ ?>
+ <tr><td><input type='submit' value='更新' /></td><td><td></td><td></td></tr>
+  </form>
+ </table>
+<include file="Public:footer"/>

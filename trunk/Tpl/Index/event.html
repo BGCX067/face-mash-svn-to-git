@@ -1,0 +1,15 @@
+<include file="Public:header"/>
+
+<div style="width:800px;font-size:33px;overflow:hidden;">
+如何获取经验值？
+</div>
+<table>
+<?php
+foreach($es as $e){
+?>
+<tr><td width='100'>{$e.desc}</td><td>{$e.score}</td></tr>
+<?php
+}
+?>
+</table>
+<include file="Public:footer"/>

@@ -1,0 +1,25 @@
+<script type="text/javascript" src="__PUBLIC__/js/jquery.ajaxfileupload.js"></script>
+<script>
+function upload(){
+alert(1);
+$.ajaxFileUpload ({
+url :"{:U('Home/upload')}",
+secureuri :false,
+fileElementId :'filedata',
+dataType : 'json',
+success : function (data, status){
+if(data.err!=null){
+  alert(data.err);
+}else if(data.status==1){
+   alert(data.msg);
+   }else{
+   alert(data.msg);
+   }
+},
+error: function (data, status, e){
+alert(e);
+}
+})
+return false;
+}
+</script>

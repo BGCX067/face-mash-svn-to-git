@@ -1,0 +1,18 @@
+<include file="Public:adminHeader"/>
+ <table>
+ <tr><td>原地址</td><td>重写后的地址</td><td>操作</td></tr>
+ <form action='{:U('admin/Rewrite/add')}' method='post'>
+ <tr><td><input type='text' name='value' /></td><td><input type='text' name='name' /></td><td><input type='submit' value='添加' /></td></tr>
+ </form>
+<form action='{:U('admin/Rewrite/update')}' method='post'>
+ <?php
+ foreach($res as $re){
+ ?>
+<tr><td><input type='hidden' name='rwid[]' value='{$re.rwid}' /><input type='text' name='value[]' value='{$re.value}' /></td><td><input type='text' name='name[]'  value='{$re.name}'  /></td><td><a href="{:U('admin/Rewrite/del',array('rwid'=>$re['rwid']))}">删除</a></td></tr>
+ <?php
+}
+ ?>
+ <tr><td><input type='submit' value='更新' /></td><td><td></td><td></td></tr>
+  </form>
+ </table>
+<include file="Public:footer"/>

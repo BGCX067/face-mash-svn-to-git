@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base id="headbase" href="{:SITE_URL}" />
+  <title>成都信息工程学院 Facemash</title>
+  <meta charset="utf-8" />
+  <meta name="description" content="皇皇成信，人面桃花，故人虽去，以此为家。成都信息工程学院 Facemash，等你回家！" />
+  <link rel="stylesheet" href="__PUBLIC__/css/style.css?version=1.0.1" />
+  <link rel="stylesheet" href="__PUBLIC__/css/login.css?version=1.0.1" />
+  <script src="__PUBLIC__/js/jquery.min.js"></script>
+</head>
+<body>
+<div class="header_sl">
+    <div class="wrap_sl">
+        <div class="logo_sl"><h1>CUITer's 脸</h1></div>
+        <div id="header"  class="header_info_sl">
+<div id="grade" style="overflow:hidden;">
+<li>年级选择：</li>
+<li><a href="{:U('Index/index',array('grade'=>'all'))}">全部</a></li>
+<?php
+$gs=D('User')->getGrades();
+foreach($gs as $g){
+if(isset($_GET['grade'])&&$_GET['grade']==$g){
+?>
+<li><a href="{:U('Index/index',array('grade'=>$g))}" style="font-weight:bold;color:red">{$g}级</a></li>
+<?php
+}else{
+?>
+<li><a href="{:U('Index/index',array('grade'=>$g))}">{$g}级</a></li>
+<?php
+}
+}
+?>
+</div>
+<li><a href="{:U('Index/index')}">首页</a></li>
+<?php
+foreach($types as $type){
+if(isset($_GET['type'])&&ACTION_NAME=='pk'&&$type['name']==$_GET['type']){
+?>
+<li><a href="{:U('Index/pk',array('type'=>$type['name']))}" style="font-weight:bold;color:red">PK-{$type.name}</a></li>
+<?php
+}else{
+?>
+<li><a href="{:U('Index/pk',array('type'=>$type['name']))}">PK-{$type.name}</a></li>
+<?php
+}
+}
+?>
+<?php
+foreach($types as $type){
+if(isset($_GET['type'])&&ACTION_NAME=='rank'&&$type['name']==$_GET['type']){
+?>
+<li><a href="{:U('Index/rank',array('type'=>$type['name']))}"style="font-weight:bold;color:red">{$type.desc}排行榜</a>
+<?php
+if(session('admin')!=null){
+?>
+[<a href="{:U('Index/rank',array('type'=>$type['name'],'sum'=>20,'order'=>'ASC'))}">淘汰</a>]
+<?php
+}
+?>
+</li>
+<?php
+}else{
+?>
+<li><a href="{:U('Index/rank',array('type'=>$type['name']))}">{$type.desc}排行榜</a>
+<?php
+if(session('admin')!=null){
+?>
+[<a href="{:U('Index/rank',array('type'=>$type['name'],'sum'=>20,'order'=>'ASC'))}">淘汰</a>]
+<?php
+}
+?>
+</li>
+<?php
+}
+}
+if(!$user){
+?>
+<li><a href="{:U('Index/login')}" style="color:red">登录</a></li>
+<?php
+}else{
+?>
+<li>欢迎你，{$user.name}[<a href="{:U('Home/quit')}">退出</a>]</li>
+<li><a href="{:U('Home/index')}">个人中心</a></li>
+<?php
+}
+?>
+<br>
+<?php
+if(isset($_GET['order'])){
+?>
+<a style="font-weight:bold;color:black;" href="{:U('Admin/pushOut',array('type'=>$_GET['type']))}">点击淘汰以下选手</a>
+<?php
+}
+?>
+</div>
+    </div>
+
+    </div>
+<div style="margin:0px auto;width:960px;overflow:hidden;">{$config.announce}</div>
+    <div class="main_sl">
+<div  class="wrap_sl content_sl">

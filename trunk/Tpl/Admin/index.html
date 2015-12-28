@@ -1,0 +1,25 @@
+<include file="Public:adminHeader"/>
+  <section id="content">
+    <section id="vote_page">
+        <div id="content">
+						<table>
+						<tr><td>字段</td><td>名称</td><td>评比性别</td><td>操作</td></tr>
+						<form action="{:U('Admin/add')}" method="post">
+						<tr><td><input type="text" name="name" class="inputstyle"/></td><td><input type="text" name="desc"  class="inputstyle"/></td><td><select name="sex"><option value="女">女</option><option value="男">男</option></select></td><td><input type="submit" value="添加"/></td></tr>
+						</form>
+						<form action="{:U('Admin/update')}" method="post">
+						<?php
+						foreach($fs as $f){
+						?>
+						<tr><td><input type="hidden" name="sfid[]" value="{$f.sfid}" /><input type="text" name="name[]" value="{$f.name}" class="inputstyle"/></td><td><input type="text" name="desc[]"  value="{$f.desc}"  class="inputstyle"/></td><td><select name="sex[]"><option value="{$f.sex}">{$f.sex}</option><option value="女">女</option><option value="男">男</option></select></td><td><a href="{:U('Admin/delete',array('id'=>$f['sfid']))}">删除</a></td></tr>
+						<?php
+						}
+						?>
+						<td><input type="submit" value="修改"/></td><td></td><td></td>
+						</form>
+						</table>
+
+        </div>
+     </section>
+  </section>
+<include file="Public:footer"/>

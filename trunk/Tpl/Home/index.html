@@ -1,0 +1,35 @@
+<include file="Public:header"/>
+<div class="box_sl">
+<li><img width="140" height="180" src="{:U('Home/avatar')}"/><br>{$user.name}|{$user.department}|{$user.class}<br>
+当前经验值：{$event_score}(<a href="{:U('Index/showEvent')}">如何获得经验值？</a>)
+<br>
+<a href="{:U('Space/index',array('number'=>$user['number']))}">查看排名</a>
+&nbsp;&nbsp;
+<a href="index.php?m=Home&a=uavatar">头像上传</a><br>
+您的邀请链接：{:SITE_URL}{:U('Index/login',array('invite_number'=>$user['number']))}
+</li>
+</div>
+
+<div style="width:900px; overflow:hidden;">
+<?php
+foreach($as as $a){
+?>
+<li><a href="{:U('Home/change',array('aid'=>$a['aid']))}"><img src="{:U('Home/getAvatar',array('aid'=>$a['aid']))}"></a><br>
+<?php
+if($a['check']==0){
+?>
+<span style="color:red;">该照片还没有通过审核</span>
+<?php
+}else{
+?>
+<span style="color:green;">通过审核,直接点击更换头像</span>
+<?php
+}
+?>
+</li>
+<?php
+}
+?>
+</div>
+
+<include file="Public:footer"/>
